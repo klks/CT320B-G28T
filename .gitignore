@@ -1,0 +1,24 @@
+## .NET
+bin/
+obj/
+*.user
+.vs/
+artifacts/
+TestResults/
+
+## Rider / VS
+.idea/
+
+## Local capture / experiment output
+captures/
+*.cap.bin
+
+## others
+ida/
+CLAUDE.md
+PLAN*.md
+tools/
+tests/
+Templates/
+Assets/
+docs/*_internal.md

@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <LangVersion>latest</LangVersion>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <RootNamespace>CT320B.UsbApi</RootNamespace>
+    <Platforms>AnyCPU;x86;x64</Platforms>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- System.Drawing.Common is Windows-only; used by the GDI+-equivalent rasterizer. -->
+    <PackageReference Include="System.Drawing.Common" Version="10.0.8" />
+    <!-- Logging abstractions only (no concrete provider, no extra deps). -->
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="10.0.8" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <InternalsVisibleTo Include="CT320B.UsbApi.Tests" />
+  </ItemGroup>
+
+</Project>

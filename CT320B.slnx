@@ -1,0 +1,16 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/CT320B.UsbApi/CT320B.UsbApi.csproj" />
+    <Project Path="src/CT320B.LabelDesigner.Core/CT320B.LabelDesigner.Core.csproj" />
+    <Project Path="src/CT320B.LabelDesigner/CT320B.LabelDesigner.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/CT320B.UsbApi.Tests/CT320B.UsbApi.Tests.csproj" />
+    <Project Path="tests/CT320B.LabelDesigner.Tests/CT320B.LabelDesigner.Tests.csproj" />
+  </Folder>
+  <Folder Name="/tools/">
+    <Project Path="tools/NativeOracle/NativeOracle.csproj">
+      <Platform Project="x86" />
+    </Project>
+  </Folder>
+</Solution>

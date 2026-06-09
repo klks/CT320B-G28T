@@ -1,0 +1,45 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <LangVersion>latest</LangVersion>
+    <RootNamespace>CT320B.LabelDesigner</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CT320B.LabelDesigner.Core\CT320B.LabelDesigner.Core.csproj" />
+    <ProjectReference Include="..\CT320B.UsbApi\CT320B.UsbApi.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Renders the bundled Fluent SVG icons to bitmaps (MIT-licensed icon set). -->
+    <PackageReference Include="Svg" Version="3.4.7" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Toolbar/ribbon icons (Fluent UI System Icons, MIT) — embedded so they ship in the exe. -->
+    <EmbeddedResource Include="Icons\*.svg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Bundled template folders copied beside the exe (shipped by publish), resolved at runtime via
+         AppPaths.{User,Public}TemplatesDir. Both folders may hold .ct320b.json or .ddl files. -->
+    <Content Include="Templates\User\**\*.ddl;Templates\User\**\*.ct320b.json" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="Templates\Public\**\*.ddl;Templates\Public\**\*.ct320b.json" CopyToOutputDirectory="PreserveNewest" />
+    <!-- Fallback pre-printed background images, matched by file name when a .ddl's `background` path is
+         absent on this machine (DdlImporter.BackgroundsDir). -->
+    <Content Include="Templates\Backgrounds\**\*.png;Templates\Backgrounds\**\*.jpg;Templates\Backgrounds\**\*.jpeg;Templates\Backgrounds\**\*.bmp;Templates\Backgrounds\**\*.gif" CopyToOutputDirectory="PreserveNewest" />
+    <!-- Bundled clip-art / emoji (Assets\Clipart\<category>\*.png) for the Insert ▸ Clip-art picker. -->
+    <Content Include="Assets\Clipart\**\*.png" CopyToOutputDirectory="PreserveNewest" />
+    <!-- UI languages: one <code>.json per language, shipped in the lang folder beside the exe. Users can
+         drop more files here at runtime; resolved via AppPaths.LangDir (see Loc). -->
+    <Content Include="lang\*.json;lang\README.txt" CopyToOutputDirectory="PreserveNewest" />
+    <!-- OSS attribution shipped beside the exe (and by publish). -->
+    <Content Include="..\..\NOTICE.txt" Link="NOTICE.txt" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <LangVersion>latest</LangVersion>
+    <RootNamespace>CT320B.LabelDesigner.Core</RootNamespace>
+    <!-- UI-free design core: model + renderer + serialization + print job. Testable. -->
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- GDI+ rendering (same path the printer library's rasterizer uses → true WYSIWYG). -->
+    <PackageReference Include="System.Drawing.Common" Version="10.0.8" />
+    <!-- QR/barcode (Decision D2). Core only: we use ZXing's BarcodeWriterPixelData and convert the
+         pixel data to a Bitmap ourselves, so we avoid the Windows.Compatibility binding (which pins
+         System.Drawing.Common 9.x and conflicts with the library's 8.0.10). -->
+    <PackageReference Include="ZXing.Net" Version="0.16.11" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CT320B.UsbApi\CT320B.UsbApi.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <InternalsVisibleTo Include="CT320B.LabelDesigner.Tests" />
+  </ItemGroup>
+
+</Project>
